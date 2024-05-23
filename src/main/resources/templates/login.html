@@ -2,23 +2,110 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Login</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .login-container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            label {
+                margin: 10px 0 5px;
+                color: #555;
+            }
+            input {
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            button {
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            .google-login {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .google-icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                padding: 10px;
+                background-color: white;
+                color: white;
+                border: 1px solid rgb(225, 19, 19);
+                border-radius: 50px;
+
+                font-size: 16px;
+                margin: 10px 0;
+            }
+            .register-link {
+                text-align: center;
+                margin-top: 10px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Login</h1>
-        <form th:action="@{/login}" method="post">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required />
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required />
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <a th:href="@{/oauth2/authorization/google}">Login with Google</a>
-        <p>
-            Don't have an account? <a th:href="@{/register}">Register here</a>
-        </p>
+        <div class="login-container">
+            <h1>Login</h1>
+            <form th:action="@{/login}" method="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <a class="google-login" th:href="@{/oauth2/authorization/google}">
+                <img
+                    class="google-icon"
+                    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                    alt="Google logo"
+                />
+            </a>
+            <p class="register-link">
+                Don't have an account?
+                <a th:href="@{/register}">Register here</a>
+            </p>
+        </div>
     </body>
 </html>

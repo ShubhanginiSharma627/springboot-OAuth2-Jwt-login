@@ -2,27 +2,89 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Register</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .register-container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            label {
+                margin: 10px 0 5px;
+                color: #555;
+            }
+            input,
+            select {
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            button {
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            .login-link {
+                text-align: center;
+                margin-top: 10px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Register</h1>
-        <form th:action="@{/register}" method="post">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required />
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required />
-            </div>
-            <div>
-                <label for="role">Role:</label>
-                <select id="role" name="role">
-                    <option value="ROLE_USER">User</option>
-                    <option value="ROLE_ADMIN">Admin</option>
-                </select>
-            </div>
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+        <div class="register-container">
+            <h1>Register</h1>
+            <form th:action="@{/register}" method="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="ROLE_USER">User</option>
+                        <option value="ROLE_ADMIN">Admin</option>
+                    </select>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p class="login-link">
+                Already have an account? <a th:href="@{/login}">Login here</a>
+            </p>
+        </div>
     </body>
 </html>
